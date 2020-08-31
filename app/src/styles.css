@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.form-control{
+  border-radius: 5px ;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  .noBreak {
+    break-inside: avoid;
+  }
+
+  .noPrint {
+    display: none;
+  }
+
+  .showPrint {
+    display: inline;
+  }
+}

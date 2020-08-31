@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.db.news.dao.NewsMapper">
+  <resultMap id="BaseResultMap" type="com.sc.db.news.model.News">
+    <id column="NEWS_ID" jdbcType="INTEGER" property="newsId" />
+    <result column="IS_ON_APP" jdbcType="INTEGER" property="isOnApp" />
+    <result column="IS_ON_APP_EN" jdbcType="INTEGER" property="isOnAppEn" />
+    <result column="NEWS_TITLE" jdbcType="VARCHAR" property="newsTitle" />
+    <result column="SUMMARY" jdbcType="VARCHAR" property="summary" />
+    <result column="LINK_URL" jdbcType="VARCHAR" property="linkUrl" />
+    <result column="NEWS_TITLE_EN" jdbcType="VARCHAR" property="newsTitleEn" />
+    <result column="SUMMARY_EN" jdbcType="VARCHAR" property="summaryEn" />
+    <result column="LINK_URL_EN" jdbcType="VARCHAR" property="linkUrlEn" />
+    <result column="NEWS_IMAGE" jdbcType="VARCHAR" property="newsImage" />
+    <result column="NEWS_IMAGE2" jdbcType="VARCHAR" property="newsImage2" />
+    <result column="NEWS_IMAGE3" jdbcType="VARCHAR" property="newsImage3" />
+    <result column="POST_TIME_TEXT" jdbcType="VARCHAR" property="postTimeText" />
+    <result column="POST_TIME" jdbcType="TIMESTAMP" property="postTime" />
+    <result column="IMPORT_DATE" jdbcType="TIMESTAMP" property="importDate" />
+    <result column="NOTE1" jdbcType="VARCHAR" property="note1" />
+    <result column="NOTE2" jdbcType="VARCHAR" property="note2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    NEWS_ID, IS_ON_APP, IS_ON_APP_EN, NEWS_TITLE, SUMMARY, LINK_URL, NEWS_TITLE_EN, SUMMARY_EN, 
+    LINK_URL_EN, NEWS_IMAGE, NEWS_IMAGE2, NEWS_IMAGE3, POST_TIME_TEXT, POST_TIME, IMPORT_DATE, 
+    NOTE1, NOTE2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from news
+    where NEWS_ID = #{newsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from news
+    where NEWS_ID = #{newsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sc.db.news.model.News">
+    insert into news (NEWS_ID, IS_ON_APP, IS_ON_APP_EN, 
+      NEWS_TITLE, SUMMARY, LINK_URL, 
+      NEWS_TITLE_EN, SUMMARY_EN, LINK_URL_EN, 
+      NEWS_IMAGE, NEWS_IMAGE2, NEWS_IMAGE3, 
+      POST_TIME_TEXT, POST_TIME, IMPORT_DATE, 
+      NOTE1, NOTE2)
+    values (#{newsId,jdbcType=INTEGER}, #{isOnApp,jdbcType=INTEGER}, #{isOnAppEn,jdbcType=INTEGER}, 
+      #{newsTitle,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{linkUrl,jdbcType=VARCHAR}, 
+      #{newsTitleEn,jdbcType=VARCHAR}, #{summaryEn,jdbcType=VARCHAR}, #{linkUrlEn,jdbcType=VARCHAR}, 
+      #{newsImage,jdbcType=VARCHAR}, #{newsImage2,jdbcType=VARCHAR}, #{newsImage3,jdbcType=VARCHAR}, 
+      #{postTimeText,jdbcType=VARCHAR}, #{postTime,jdbcType=TIMESTAMP}, #{importDate,jdbcType=TIMESTAMP}, 
+      #{note1,jdbcType=VARCHAR}, #{note2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.db.news.model.News">
+    insert into news
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="newsId != null">
+        NEWS_ID,
+      </if>
+      <if test="isOnApp != null">
+        IS_ON_APP,
+      </if>
+      <if test="isOnAppEn != null">
+        IS_ON_APP_EN,
+      </if>
+      <if test="newsTitle != null">
+        NEWS_TITLE,
+      </if>
+      <if test="summary != null">
+        SUMMARY,
+      </if>
+      <if test="linkUrl != null">
+        LINK_URL,
+      </if>
+      <if test="newsTitleEn != null">
+        NEWS_TITLE_EN,
+      </if>
+      <if test="summaryEn != null">
+        SUMMARY_EN,
+      </if>
+      <if test="linkUrlEn != null">
+        LINK_URL_EN,
+      </if>
+      <if test="newsImage != null">
+        NEWS_IMAGE,
+      </if>
+      <if test="newsImage2 != null">
+        NEWS_IMAGE2,
+      </if>
+      <if test="newsImage3 != null">
+        NEWS_IMAGE3,
+      </if>
+      <if test="postTimeText != null">
+        POST_TIME_TEXT,
+      </if>
+      <if test="postTime != null">
+        POST_TIME,
+      </if>
+      <if test="importDate != null">
+        IMPORT_DATE,
+      </if>
+      <if test="note1 != null">
+        NOTE1,
+      </if>
+      <if test="note2 != null">
+        NOTE2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="newsId != null">
+        #{newsId,jdbcType=INTEGER},
+      </if>
+      <if test="isOnApp != null">
+        #{isOnApp,jdbcType=INTEGER},
+      </if>
+      <if test="isOnAppEn != null">
+        #{isOnAppEn,jdbcType=INTEGER},
+      </if>
+      <if test="newsTitle != null">
+        #{newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="linkUrl != null">
+        #{linkUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="newsTitleEn != null">
+        #{newsTitleEn,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryEn != null">
+        #{summaryEn,jdbcType=VARCHAR},
+      </if>
+      <if test="linkUrlEn != null">
+        #{linkUrlEn,jdbcType=VARCHAR},
+      </if>
+      <if test="newsImage != null">
+        #{newsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="newsImage2 != null">
+        #{newsImage2,jdbcType=VARCHAR},
+      </if>
+      <if test="newsImage3 != null">
+        #{newsImage3,jdbcType=VARCHAR},
+      </if>
+      <if test="postTimeText != null">
+        #{postTimeText,jdbcType=VARCHAR},
+      </if>
+      <if test="postTime != null">
+        #{postTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="importDate != null">
+        #{importDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="note1 != null">
+        #{note1,jdbcType=VARCHAR},
+      </if>
+      <if test="note2 != null">
+        #{note2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.db.news.model.News">
+    update news
+    <set>
+      <if test="isOnApp != null">
+        IS_ON_APP = #{isOnApp,jdbcType=INTEGER},
+      </if>
+      <if test="isOnAppEn != null">
+        IS_ON_APP_EN = #{isOnAppEn,jdbcType=INTEGER},
+      </if>
+      <if test="newsTitle != null">
+        NEWS_TITLE = #{newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        SUMMARY = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="linkUrl != null">
+        LINK_URL = #{linkUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="newsTitleEn != null">
+        NEWS_TITLE_EN = #{newsTitleEn,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryEn != null">
+        SUMMARY_EN = #{summaryEn,jdbcType=VARCHAR},
+      </if>
+      <if test="linkUrlEn != null">
+        LINK_URL_EN = #{linkUrlEn,jdbcType=VARCHAR},
+      </if>
+      <if test="newsImage != null">
+        NEWS_IMAGE = #{newsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="newsImage2 != null">
+        NEWS_IMAGE2 = #{newsImage2,jdbcType=VARCHAR},
+      </if>
+      <if test="newsImage3 != null">
+        NEWS_IMAGE3 = #{newsImage3,jdbcType=VARCHAR},
+      </if>
+      <if test="postTimeText != null">
+        POST_TIME_TEXT = #{postTimeText,jdbcType=VARCHAR},
+      </if>
+      <if test="postTime != null">
+        POST_TIME = #{postTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="importDate != null">
+        IMPORT_DATE = #{importDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="note1 != null">
+        NOTE1 = #{note1,jdbcType=VARCHAR},
+      </if>
+      <if test="note2 != null">
+        NOTE2 = #{note2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where NEWS_ID = #{newsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.db.news.model.News">
+    update news
+    set IS_ON_APP = #{isOnApp,jdbcType=INTEGER},
+      IS_ON_APP_EN = #{isOnAppEn,jdbcType=INTEGER},
+      NEWS_TITLE = #{newsTitle,jdbcType=VARCHAR},
+      SUMMARY = #{summary,jdbcType=VARCHAR},
+      LINK_URL = #{linkUrl,jdbcType=VARCHAR},
+      NEWS_TITLE_EN = #{newsTitleEn,jdbcType=VARCHAR},
+      SUMMARY_EN = #{summaryEn,jdbcType=VARCHAR},
+      LINK_URL_EN = #{linkUrlEn,jdbcType=VARCHAR},
+      NEWS_IMAGE = #{newsImage,jdbcType=VARCHAR},
+      NEWS_IMAGE2 = #{newsImage2,jdbcType=VARCHAR},
+      NEWS_IMAGE3 = #{newsImage3,jdbcType=VARCHAR},
+      POST_TIME_TEXT = #{postTimeText,jdbcType=VARCHAR},
+      POST_TIME = #{postTime,jdbcType=TIMESTAMP},
+      IMPORT_DATE = #{importDate,jdbcType=TIMESTAMP},
+      NOTE1 = #{note1,jdbcType=VARCHAR},
+      NOTE2 = #{note2,jdbcType=VARCHAR}
+    where NEWS_ID = #{newsId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="queryNewsList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from news
+    where 1= 1 
+  	<if test="newsTitle != null">
+		and NEWS_TITLE like CONCAT('%', #{newsTitle, jdbcType=VARCHAR}, '%')
+    </if>
+    <if test="newsTitleEn != null">
+		and NEWS_TITLE_EN like CONCAT('%', #{newsTitleEn, jdbcType=VARCHAR}, '%')
+    </if>
+    <if test="summary != null">
+		and SUMMARY like CONCAT('%', #{summary, jdbcType=VARCHAR}, '%')
+    </if>
+    <if test="summaryEn != null">
+		and SUMMARY_EN like CONCAT('%', #{summaryEn, jdbcType=VARCHAR}, '%')
+    </if>
+    <if test="isOnApp != null">
+     	and IS_ON_APP = #{isOnApp,jdbcType=INTEGER}
+    </if> 
+    <if test="isOnAppEn != null">
+     	and IS_ON_APP_EN = #{isOnAppEn,jdbcType=INTEGER}
+    </if> 
+    <if test="startDate != null and endDate !=null">
+		and POST_TIME between #{startDate,jdbcType=DATE} and #{endDate,jdbcType=DATE}
+  	</if> 
+    order by POST_TIME DESC
+  </select>
+  
+  <select id="queryNewsGroupList" parameterType="java.util.Map" resultType="com.sc.api_backend.model.response.GroupMonth">
+   	select  YEAR(POST_TIME) groupYear , MONTH(POST_TIME) groupMonth FROM news
+   	where 1=1 
+  	<if test="lang == 1">
+     	and IS_ON_APP = 1
+    </if> 
+    <if test="lang == 2">
+     	and IS_ON_APP_EN = 1
+    </if>
+     group by groupYear , groupMonth
+    order by groupYear desc , groupMonth desc
+  </select>  
+  
+  <select id="queryNewsMonthList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <if test="lang == 1">
+  		NEWS_ID, IS_ON_APP, IS_ON_APP_EN, NEWS_TITLE, SUMMARY, LINK_URL, NEWS_TITLE_EN, SUMMARY_EN, 
+    	LINK_URL_EN, NEWS_IMAGE, NEWS_IMAGE2, NEWS_IMAGE3, POST_TIME_TEXT, POST_TIME, IMPORT_DATE, 
+    	NOTE1, NOTE2
+    </if>
+    <if test="lang == 2">
+    	NEWS_ID, IS_ON_APP, IS_ON_APP_EN, NEWS_TITLE_EN NEWS_TITLE, SUMMARY_EN SUMMARY, 
+    	LINK_URL_EN LINK_URL, NEWS_IMAGE, NEWS_IMAGE2, NEWS_IMAGE3, POST_TIME_TEXT, POST_TIME, IMPORT_DATE, 
+    	NOTE1, NOTE2
+    </if>
+    from news
+    where 1= 1 
+    <if test="year != null">
+		and YEAR(POST_TIME) = #{year,jdbcType=INTEGER}
+    </if>
+  	<if test="month != null">
+		and MONTH(POST_TIME) = #{month,jdbcType=INTEGER}
+    </if>
+    <if test="lang == 1">
+     	and IS_ON_APP = 1
+    </if> 
+    <if test="lang == 2">
+     	and IS_ON_APP_EN = 1
+    </if>
+    order by POST_TIME DESC
+  </select>
+  
+  
+  
+</mapper>

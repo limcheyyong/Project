@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.db.content.dao.ContentMapper">
+  <resultMap id="BaseResultMap" type="com.sc.db.content.model.Content">
+    <id column="CONTENT_ID" jdbcType="INTEGER" property="contentId" />
+    <result column="CONTENT_TYPE" jdbcType="INTEGER" property="contentType" />
+    <result column="LANGUAGE_CODE" jdbcType="VARCHAR" property="languageCode" />
+    <result column="TITLE1" jdbcType="VARCHAR" property="title1" />
+    <result column="TITLE2" jdbcType="VARCHAR" property="title2" />
+    <result column="TITLE3" jdbcType="VARCHAR" property="title3" />
+    <result column="TITLE4" jdbcType="VARCHAR" property="title4" />
+    <result column="TITLE5" jdbcType="VARCHAR" property="title5" />
+    <result column="TITLE6" jdbcType="VARCHAR" property="title6" />
+    <result column="SUBTITLE1" jdbcType="VARCHAR" property="subtitle1" />
+    <result column="SUBTITLE2" jdbcType="VARCHAR" property="subtitle2" />
+    <result column="SUBTITLE3" jdbcType="VARCHAR" property="subtitle3" />
+    <result column="SUBTITLE4" jdbcType="VARCHAR" property="subtitle4" />
+    <result column="SUBTITLE5" jdbcType="VARCHAR" property="subtitle5" />
+    <result column="SUBTITLE6" jdbcType="VARCHAR" property="subtitle6" />
+    <result column="CONTENT1" jdbcType="VARCHAR" property="content1" />
+    <result column="CONTENT2" jdbcType="VARCHAR" property="content2" />
+    <result column="CONTENT3" jdbcType="VARCHAR" property="content3" />
+    <result column="CONTENT4" jdbcType="VARCHAR" property="content4" />
+    <result column="CONTENT5" jdbcType="VARCHAR" property="content5" />
+    <result column="CONTENT6" jdbcType="VARCHAR" property="content6" />
+    <result column="IMAGE1" jdbcType="VARCHAR" property="image1" />
+    <result column="IMAGE2" jdbcType="VARCHAR" property="image2" />
+    <result column="IMAGE3" jdbcType="VARCHAR" property="image3" />
+    <result column="IMAGE4" jdbcType="VARCHAR" property="image4" />
+    <result column="IMAGE5" jdbcType="VARCHAR" property="image5" />
+    <result column="IMAGE6" jdbcType="VARCHAR" property="image6" />
+    <result column="IMAGE_EXTEND" jdbcType="VARCHAR" property="imageExtend" />
+    <result column="IS_ONLINE1" jdbcType="INTEGER" property="isOnline1" />
+    <result column="IS_ONLINE2" jdbcType="INTEGER" property="isOnline2" />
+    <result column="IS_ONLINE3" jdbcType="INTEGER" property="isOnline3" />
+    <result column="IS_ONLINE4" jdbcType="INTEGER" property="isOnline4" />
+    <result column="IS_ONLINE5" jdbcType="INTEGER" property="isOnline5" />
+    <result column="IS_ONLINE6" jdbcType="INTEGER" property="isOnline6" />
+    <result column="IS_ONLINE_EXTEND" jdbcType="INTEGER" property="isOnlineExtend" />
+    <result column="VIDEO1" jdbcType="VARCHAR" property="video1" />
+    <result column="VIDEO2" jdbcType="VARCHAR" property="video2" />
+    <result column="VIDEO3" jdbcType="VARCHAR" property="video3" />
+    <result column="VIDEO_IMAGE1" jdbcType="VARCHAR" property="videoImage1" />
+    <result column="VIDEO_IMAGE2" jdbcType="VARCHAR" property="videoImage2" />
+    <result column="VIDEO_IMAGE3" jdbcType="VARCHAR" property="videoImage3" />
+    <result column="NOTE1" jdbcType="VARCHAR" property="note1" />
+    <result column="NOTE2" jdbcType="VARCHAR" property="note2" />
+    <result column="NOTE3" jdbcType="VARCHAR" property="note3" />
+    <result column="NOTE4" jdbcType="VARCHAR" property="note4" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTENT_ID, CONTENT_TYPE, LANGUAGE_CODE, TITLE1, TITLE2, TITLE3, TITLE4, TITLE5, 
+    TITLE6, SUBTITLE1, SUBTITLE2, SUBTITLE3, SUBTITLE4, SUBTITLE5, SUBTITLE6, CONTENT1, 
+    CONTENT2, CONTENT3, CONTENT4, CONTENT5, CONTENT6, IMAGE1, IMAGE2, IMAGE3, IMAGE4, 
+    IMAGE5, IMAGE6, IMAGE_EXTEND, IS_ONLINE1, IS_ONLINE2, IS_ONLINE3, IS_ONLINE4, IS_ONLINE5, 
+    IS_ONLINE6, IS_ONLINE_EXTEND, VIDEO1, VIDEO2, VIDEO3, VIDEO_IMAGE1, VIDEO_IMAGE2, 
+    VIDEO_IMAGE3, NOTE1, NOTE2, NOTE3, NOTE4
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from content
+    where CONTENT_ID = #{contentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from content
+    where CONTENT_ID = #{contentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sc.db.content.model.Content">
+    insert into content (CONTENT_ID, CONTENT_TYPE, LANGUAGE_CODE, 
+      TITLE1, TITLE2, TITLE3, 
+      TITLE4, TITLE5, TITLE6, 
+      SUBTITLE1, SUBTITLE2, SUBTITLE3, 
+      SUBTITLE4, SUBTITLE5, SUBTITLE6, 
+      CONTENT1, CONTENT2, CONTENT3, 
+      CONTENT4, CONTENT5, CONTENT6, 
+      IMAGE1, IMAGE2, IMAGE3, 
+      IMAGE4, IMAGE5, IMAGE6, 
+      IMAGE_EXTEND, IS_ONLINE1, IS_ONLINE2, 
+      IS_ONLINE3, IS_ONLINE4, IS_ONLINE5, 
+      IS_ONLINE6, IS_ONLINE_EXTEND, VIDEO1, 
+      VIDEO2, VIDEO3, VIDEO_IMAGE1, 
+      VIDEO_IMAGE2, VIDEO_IMAGE3, NOTE1, 
+      NOTE2, NOTE3, NOTE4
+      )
+    values (#{contentId,jdbcType=INTEGER}, #{contentType,jdbcType=INTEGER}, #{languageCode,jdbcType=VARCHAR}, 
+      #{title1,jdbcType=VARCHAR}, #{title2,jdbcType=VARCHAR}, #{title3,jdbcType=VARCHAR}, 
+      #{title4,jdbcType=VARCHAR}, #{title5,jdbcType=VARCHAR}, #{title6,jdbcType=VARCHAR}, 
+      #{subtitle1,jdbcType=VARCHAR}, #{subtitle2,jdbcType=VARCHAR}, #{subtitle3,jdbcType=VARCHAR}, 
+      #{subtitle4,jdbcType=VARCHAR}, #{subtitle5,jdbcType=VARCHAR}, #{subtitle6,jdbcType=VARCHAR}, 
+      #{content1,jdbcType=VARCHAR}, #{content2,jdbcType=VARCHAR}, #{content3,jdbcType=VARCHAR}, 
+      #{content4,jdbcType=VARCHAR}, #{content5,jdbcType=VARCHAR}, #{content6,jdbcType=VARCHAR}, 
+      #{image1,jdbcType=VARCHAR}, #{image2,jdbcType=VARCHAR}, #{image3,jdbcType=VARCHAR}, 
+      #{image4,jdbcType=VARCHAR}, #{image5,jdbcType=VARCHAR}, #{image6,jdbcType=VARCHAR}, 
+      #{imageExtend,jdbcType=VARCHAR}, #{isOnline1,jdbcType=INTEGER}, #{isOnline2,jdbcType=INTEGER}, 
+      #{isOnline3,jdbcType=INTEGER}, #{isOnline4,jdbcType=INTEGER}, #{isOnline5,jdbcType=INTEGER}, 
+      #{isOnline6,jdbcType=INTEGER}, #{isOnlineExtend,jdbcType=INTEGER}, #{video1,jdbcType=VARCHAR}, 
+      #{video2,jdbcType=VARCHAR}, #{video3,jdbcType=VARCHAR}, #{videoImage1,jdbcType=VARCHAR}, 
+      #{videoImage2,jdbcType=VARCHAR}, #{videoImage3,jdbcType=VARCHAR}, #{note1,jdbcType=VARCHAR}, 
+      #{note2,jdbcType=VARCHAR}, #{note3,jdbcType=VARCHAR}, #{note4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.db.content.model.Content" keyProperty="contentId" useGeneratedKeys="true">
+    insert into content
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contentId != null">
+        CONTENT_ID,
+      </if>
+      <if test="contentType != null">
+        CONTENT_TYPE,
+      </if>
+      <if test="languageCode != null">
+        LANGUAGE_CODE,
+      </if>
+      <if test="title1 != null">
+        TITLE1,
+      </if>
+      <if test="title2 != null">
+        TITLE2,
+      </if>
+      <if test="title3 != null">
+        TITLE3,
+      </if>
+      <if test="title4 != null">
+        TITLE4,
+      </if>
+      <if test="title5 != null">
+        TITLE5,
+      </if>
+      <if test="title6 != null">
+        TITLE6,
+      </if>
+      <if test="subtitle1 != null">
+        SUBTITLE1,
+      </if>
+      <if test="subtitle2 != null">
+        SUBTITLE2,
+      </if>
+      <if test="subtitle3 != null">
+        SUBTITLE3,
+      </if>
+      <if test="subtitle4 != null">
+        SUBTITLE4,
+      </if>
+      <if test="subtitle5 != null">
+        SUBTITLE5,
+      </if>
+      <if test="subtitle6 != null">
+        SUBTITLE6,
+      </if>
+      <if test="content1 != null">
+        CONTENT1,
+      </if>
+      <if test="content2 != null">
+        CONTENT2,
+      </if>
+      <if test="content3 != null">
+        CONTENT3,
+      </if>
+      <if test="content4 != null">
+        CONTENT4,
+      </if>
+      <if test="content5 != null">
+        CONTENT5,
+      </if>
+      <if test="content6 != null">
+        CONTENT6,
+      </if>
+      <if test="image1 != null">
+        IMAGE1,
+      </if>
+      <if test="image2 != null">
+        IMAGE2,
+      </if>
+      <if test="image3 != null">
+        IMAGE3,
+      </if>
+      <if test="image4 != null">
+        IMAGE4,
+      </if>
+      <if test="image5 != null">
+        IMAGE5,
+      </if>
+      <if test="image6 != null">
+        IMAGE6,
+      </if>
+      <if test="imageExtend != null">
+        IMAGE_EXTEND,
+      </if>
+      <if test="isOnline1 != null">
+        IS_ONLINE1,
+      </if>
+      <if test="isOnline2 != null">
+        IS_ONLINE2,
+      </if>
+      <if test="isOnline3 != null">
+        IS_ONLINE3,
+      </if>
+      <if test="isOnline4 != null">
+        IS_ONLINE4,
+      </if>
+      <if test="isOnline5 != null">
+        IS_ONLINE5,
+      </if>
+      <if test="isOnline6 != null">
+        IS_ONLINE6,
+      </if>
+      <if test="isOnlineExtend != null">
+        IS_ONLINE_EXTEND,
+      </if>
+      <if test="video1 != null">
+        VIDEO1,
+      </if>
+      <if test="video2 != null">
+        VIDEO2,
+      </if>
+      <if test="video3 != null">
+        VIDEO3,
+      </if>
+      <if test="videoImage1 != null">
+        VIDEO_IMAGE1,
+      </if>
+      <if test="videoImage2 != null">
+        VIDEO_IMAGE2,
+      </if>
+      <if test="videoImage3 != null">
+        VIDEO_IMAGE3,
+      </if>
+      <if test="note1 != null">
+        NOTE1,
+      </if>
+      <if test="note2 != null">
+        NOTE2,
+      </if>
+      <if test="note3 != null">
+        NOTE3,
+      </if>
+      <if test="note4 != null">
+        NOTE4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contentId != null">
+        #{contentId,jdbcType=INTEGER},
+      </if>
+      <if test="contentType != null">
+        #{contentType,jdbcType=INTEGER},
+      </if>
+      <if test="languageCode != null">
+        #{languageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="title1 != null">
+        #{title1,jdbcType=VARCHAR},
+      </if>
+      <if test="title2 != null">
+        #{title2,jdbcType=VARCHAR},
+      </if>
+      <if test="title3 != null">
+        #{title3,jdbcType=VARCHAR},
+      </if>
+      <if test="title4 != null">
+        #{title4,jdbcType=VARCHAR},
+      </if>
+      <if test="title5 != null">
+        #{title5,jdbcType=VARCHAR},
+      </if>
+      <if test="title6 != null">
+        #{title6,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle1 != null">
+        #{subtitle1,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle2 != null">
+        #{subtitle2,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle3 != null">
+        #{subtitle3,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle4 != null">
+        #{subtitle4,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle5 != null">
+        #{subtitle5,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle6 != null">
+        #{subtitle6,jdbcType=VARCHAR},
+      </if>
+      <if test="content1 != null">
+        #{content1,jdbcType=VARCHAR},
+      </if>
+      <if test="content2 != null">
+        #{content2,jdbcType=VARCHAR},
+      </if>
+      <if test="content3 != null">
+        #{content3,jdbcType=VARCHAR},
+      </if>
+      <if test="content4 != null">
+        #{content4,jdbcType=VARCHAR},
+      </if>
+      <if test="content5 != null">
+        #{content5,jdbcType=VARCHAR},
+      </if>
+      <if test="content6 != null">
+        #{content6,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="image4 != null">
+        #{image4,jdbcType=VARCHAR},
+      </if>
+      <if test="image5 != null">
+        #{image5,jdbcType=VARCHAR},
+      </if>
+      <if test="image6 != null">
+        #{image6,jdbcType=VARCHAR},
+      </if>
+      <if test="imageExtend != null">
+        #{imageExtend,jdbcType=VARCHAR},
+      </if>
+      <if test="isOnline1 != null">
+        #{isOnline1,jdbcType=INTEGER},
+      </if>
+      <if test="isOnline2 != null">
+        #{isOnline2,jdbcType=INTEGER},
+      </if>
+      <if test="isOnline3 != null">
+        #{isOnline3,jdbcType=INTEGER},
+      </if>
+      <if test="isOnline4 != null">
+        #{isOnline4,jdbcType=INTEGER},
+      </if>
+      <if test="isOnline5 != null">
+        #{isOnline5,jdbcType=INTEGER},
+      </if>
+      <if test="isOnline6 != null">
+        #{isOnline6,jdbcType=INTEGER},
+      </if>
+      <if test="isOnlineExtend != null">
+        #{isOnlineExtend,jdbcType=INTEGER},
+      </if>
+      <if test="video1 != null">
+        #{video1,jdbcType=VARCHAR},
+      </if>
+      <if test="video2 != null">
+        #{video2,jdbcType=VARCHAR},
+      </if>
+      <if test="video3 != null">
+        #{video3,jdbcType=VARCHAR},
+      </if>
+      <if test="videoImage1 != null">
+        #{videoImage1,jdbcType=VARCHAR},
+      </if>
+      <if test="videoImage2 != null">
+        #{videoImage2,jdbcType=VARCHAR},
+      </if>
+      <if test="videoImage3 != null">
+        #{videoImage3,jdbcType=VARCHAR},
+      </if>
+      <if test="note1 != null">
+        #{note1,jdbcType=VARCHAR},
+      </if>
+      <if test="note2 != null">
+        #{note2,jdbcType=VARCHAR},
+      </if>
+      <if test="note3 != null">
+        #{note3,jdbcType=VARCHAR},
+      </if>
+      <if test="note4 != null">
+        #{note4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.db.content.model.Content">
+    update content
+    <set>
+      <if test="contentType != null">
+        CONTENT_TYPE = #{contentType,jdbcType=INTEGER},
+      </if>
+      <if test="languageCode != null">
+        LANGUAGE_CODE = #{languageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="title1 != null">
+        TITLE1 = #{title1,jdbcType=VARCHAR},
+      </if>
+      <if test="title2 != null">
+        TITLE2 = #{title2,jdbcType=VARCHAR},
+      </if>
+      <if test="title3 != null">
+        TITLE3 = #{title3,jdbcType=VARCHAR},
+      </if>
+      <if test="title4 != null">
+        TITLE4 = #{title4,jdbcType=VARCHAR},
+      </if>
+      <if test="title5 != null">
+        TITLE5 = #{title5,jdbcType=VARCHAR},
+      </if>
+      <if test="title6 != null">
+        TITLE6 = #{title6,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle1 != null">
+        SUBTITLE1 = #{subtitle1,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle2 != null">
+        SUBTITLE2 = #{subtitle2,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle3 != null">
+        SUBTITLE3 = #{subtitle3,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle4 != null">
+        SUBTITLE4 = #{subtitle4,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle5 != null">
+        SUBTITLE5 = #{subtitle5,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle6 != null">
+        SUBTITLE6 = #{subtitle6,jdbcType=VARCHAR},
+      </if>
+      <if test="content1 != null">
+        CONTENT1 = #{content1,jdbcType=VARCHAR},
+      </if>
+      <if test="content2 != null">
+        CONTENT2 = #{content2,jdbcType=VARCHAR},
+      </if>
+      <if test="content3 != null">
+        CONTENT3 = #{content3,jdbcType=VARCHAR},
+      </if>
+      <if test="content4 != null">
+        CONTENT4 = #{content4,jdbcType=VARCHAR},
+      </if>
+      <if test="content5 != null">
+        CONTENT5 = #{content5,jdbcType=VARCHAR},
+      </if>
+      <if test="content6 != null">
+        CONTENT6 = #{content6,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        IMAGE1 = #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        IMAGE2 = #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        IMAGE3 = #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="image4 != null">
+        IMAGE4 = #{image4,jdbcType=VARCHAR},
+      </if>
+      <if test="image5 != null">
+        IMAGE5 = #{image5,jdbcType=VARCHAR},
+      </if>
+      <if test="image6 != null">
+        IMAGE6 = #{image6,jdbcType=VARCHAR},
+      </if>
+      <if test="imageExtend != null">
+        IMAGE_EXTEND = #{imageExtend,jdbcType=VARCHAR},
+      </if>
+      <if test="isOnline1 != null">
+        IS_ONLINE1 = #{isOnline1,jdbcType=INTEGER},
+      </if>
+      <if test="isOnline2 != null">
+        IS_ONLINE2 = #{isOnline2,jdbcType=INTEGER},
+      </if>
+      <if test="isOnline3 != null">
+        IS_ONLINE3 = #{isOnline3,jdbcType=INTEGER},
+      </if>
+      <if test="isOnline4 != null">
+        IS_ONLINE4 = #{isOnline4,jdbcType=INTEGER},
+      </if>
+      <if test="isOnline5 != null">
+        IS_ONLINE5 = #{isOnline5,jdbcType=INTEGER},
+      </if>
+      <if test="isOnline6 != null">
+        IS_ONLINE6 = #{isOnline6,jdbcType=INTEGER},
+      </if>
+      <if test="isOnlineExtend != null">
+        IS_ONLINE_EXTEND = #{isOnlineExtend,jdbcType=INTEGER},
+      </if>
+      <if test="video1 != null">
+        VIDEO1 = #{video1,jdbcType=VARCHAR},
+      </if>
+      <if test="video2 != null">
+        VIDEO2 = #{video2,jdbcType=VARCHAR},
+      </if>
+      <if test="video3 != null">
+        VIDEO3 = #{video3,jdbcType=VARCHAR},
+      </if>
+      <if test="videoImage1 != null">
+        VIDEO_IMAGE1 = #{videoImage1,jdbcType=VARCHAR},
+      </if>
+      <if test="videoImage2 != null">
+        VIDEO_IMAGE2 = #{videoImage2,jdbcType=VARCHAR},
+      </if>
+      <if test="videoImage3 != null">
+        VIDEO_IMAGE3 = #{videoImage3,jdbcType=VARCHAR},
+      </if>
+      <if test="note1 != null">
+        NOTE1 = #{note1,jdbcType=VARCHAR},
+      </if>
+      <if test="note2 != null">
+        NOTE2 = #{note2,jdbcType=VARCHAR},
+      </if>
+      <if test="note3 != null">
+        NOTE3 = #{note3,jdbcType=VARCHAR},
+      </if>
+      <if test="note4 != null">
+        NOTE4 = #{note4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CONTENT_ID = #{contentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.db.content.model.Content">
+    update content
+    set CONTENT_TYPE = #{contentType,jdbcType=INTEGER},
+      LANGUAGE_CODE = #{languageCode,jdbcType=VARCHAR},
+      TITLE1 = #{title1,jdbcType=VARCHAR},
+      TITLE2 = #{title2,jdbcType=VARCHAR},
+      TITLE3 = #{title3,jdbcType=VARCHAR},
+      TITLE4 = #{title4,jdbcType=VARCHAR},
+      TITLE5 = #{title5,jdbcType=VARCHAR},
+      TITLE6 = #{title6,jdbcType=VARCHAR},
+      SUBTITLE1 = #{subtitle1,jdbcType=VARCHAR},
+      SUBTITLE2 = #{subtitle2,jdbcType=VARCHAR},
+      SUBTITLE3 = #{subtitle3,jdbcType=VARCHAR},
+      SUBTITLE4 = #{subtitle4,jdbcType=VARCHAR},
+      SUBTITLE5 = #{subtitle5,jdbcType=VARCHAR},
+      SUBTITLE6 = #{subtitle6,jdbcType=VARCHAR},
+      CONTENT1 = #{content1,jdbcType=VARCHAR},
+      CONTENT2 = #{content2,jdbcType=VARCHAR},
+      CONTENT3 = #{content3,jdbcType=VARCHAR},
+      CONTENT4 = #{content4,jdbcType=VARCHAR},
+      CONTENT5 = #{content5,jdbcType=VARCHAR},
+      CONTENT6 = #{content6,jdbcType=VARCHAR},
+      IMAGE1 = #{image1,jdbcType=VARCHAR},
+      IMAGE2 = #{image2,jdbcType=VARCHAR},
+      IMAGE3 = #{image3,jdbcType=VARCHAR},
+      IMAGE4 = #{image4,jdbcType=VARCHAR},
+      IMAGE5 = #{image5,jdbcType=VARCHAR},
+      IMAGE6 = #{image6,jdbcType=VARCHAR},
+      IMAGE_EXTEND = #{imageExtend,jdbcType=VARCHAR},
+      IS_ONLINE1 = #{isOnline1,jdbcType=INTEGER},
+      IS_ONLINE2 = #{isOnline2,jdbcType=INTEGER},
+      IS_ONLINE3 = #{isOnline3,jdbcType=INTEGER},
+      IS_ONLINE4 = #{isOnline4,jdbcType=INTEGER},
+      IS_ONLINE5 = #{isOnline5,jdbcType=INTEGER},
+      IS_ONLINE6 = #{isOnline6,jdbcType=INTEGER},
+      IS_ONLINE_EXTEND = #{isOnlineExtend,jdbcType=INTEGER},
+      VIDEO1 = #{video1,jdbcType=VARCHAR},
+      VIDEO2 = #{video2,jdbcType=VARCHAR},
+      VIDEO3 = #{video3,jdbcType=VARCHAR},
+      VIDEO_IMAGE1 = #{videoImage1,jdbcType=VARCHAR},
+      VIDEO_IMAGE2 = #{videoImage2,jdbcType=VARCHAR},
+      VIDEO_IMAGE3 = #{videoImage3,jdbcType=VARCHAR},
+      NOTE1 = #{note1,jdbcType=VARCHAR},
+      NOTE2 = #{note2,jdbcType=VARCHAR},
+      NOTE3 = #{note3,jdbcType=VARCHAR},
+      NOTE4 = #{note4,jdbcType=VARCHAR}
+    where CONTENT_ID = #{contentId,jdbcType=INTEGER}
+  </update>
+  
+   <select id="queryContentList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from content
+    where 1= 1 
+ 	<if test="contentId != null">
+      and CONTENT_ID = #{contentId,jdbcType=INTEGER}
+    </if>
+    <if test="contentType != null">
+      and CONTENT_TYPE = #{contentType,jdbcType=INTEGER}
+    </if>
+  	<if test="languageCode != null">
+      and LANGUAGE_CODE = #{languageCode,jdbcType=VARCHAR}
+    </if>
+    
+  </select>
+  
+</mapper>

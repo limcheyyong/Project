@@ -1,0 +1,14 @@
+<div class="main-content">
+  <div class="main-content-inner">
+    <div class="page-content">
+      <button class="btn btn-sm" (click)='addSkill()'>Add FormControl</button>
+      <button class="btn btn-sm" (click)='replace()'>Add FormControl</button>
+      <div *ngFor="let item of skills.controls;let i = index">
+        <input [formControl]='skills.controls[i]'>
+        <button class="btn btn-sm" (click)='removeSkill(i)'>Add FormControl</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

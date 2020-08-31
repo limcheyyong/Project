@@ -1,0 +1,82 @@
+<div>
+  <div>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <div class="login-container">
+          <div class="center">
+            <h1>
+              <i class="ace-icon fa fa-leaf green"></i>
+              <span class="red">Ace</span>
+              <span class="white" id="id-text2">Application</span>
+            </h1>
+            <h4 class="blue" id="id-company-text">&copy; Company Name</h4>
+          </div>
+
+          <div class="space-6"></div>
+
+          <div class="position-relative">
+            <div id="login-box" class="login-box visible widget-box no-border">
+              <div class="widget-body">
+                <div class="widget-main">
+                  <h4 class="header blue lighter bigger">
+                    <i class="ace-icon fa fa-coffee green"></i>
+                    Please Enter Your Information
+                  </h4>
+
+                  <div class="space-6"></div>
+
+                  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <fieldset>
+                      <label class="block clearfix">
+                        <span class="block input-icon input-icon-right" >
+                          <input type="text" class="form-control" placeholder="Username" formControlName="userCode" />
+                          <i class="ace-icon fa fa-user"></i>
+                        </span>
+                      </label>
+                      <div *ngIf="submitted && loginForm.get('userCode').errors" class="alert alert-danger">
+                        <div *ngIf="loginForm.get('userCode').errors.required">UserName is required</div>
+                      </div>
+                      <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                          <input type="password" class="form-control" placeholder="Password"
+                            formControlName="password" />
+                          <i class="ace-icon fa fa-lock"></i>
+
+
+                        </span>
+
+                      </label>
+                      <div *ngIf="submitted && loginForm.get('password').errors" class="alert alert-danger">
+                        <div *ngIf="loginForm.get('password').errors.required">Password is required</div>
+                      </div>
+                      <div class="space"></div>
+
+                      <div class="clearfix">
+                        <label class="inline">
+                          <input type="checkbox" class="ace" formControlName="rememberMe" />
+                          <span class="lbl"> Remember Me</span>
+                        </label>
+                        <!-- [disabled]="!loginForm.valid" -->
+                        <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" [disabled]="loading">
+                          <i class="ace-icon fa fa-key"></i>
+                          <span class="bigger-110">Login</span>
+                          <span *ngIf="loading" class="ace-icon fa fa-spinner fa-spin orange bigger-125"></span>
+                        </button>
+                      </div>
+
+                    </fieldset>
+                  </form>
+                  <div class="space-6"></div>
+                </div><!-- /.widget-main -->
+
+                <div class="toolbar clearfix">
+
+                </div>
+              </div><!-- /.widget-body -->
+            </div><!-- /.login-box -->
+          </div><!-- /.position-relative -->
+        </div>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.main-content -->
+</div><!-- /.main-container -->
